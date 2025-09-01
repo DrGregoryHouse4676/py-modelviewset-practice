@@ -1,9 +1,8 @@
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
+from .models import Author
+from .serializers import AuthorSerializer
 
-from author.models import Author
-from author.serializers import AuthorSerializer
 
-
-class AuthorViewSet(viewsets.ModelViewSet):
-    queryset = Author.objects.all()
+class AuthorViewSet(ModelViewSet):
+    queryset = Author.objects.all().order_by("id")
     serializer_class = AuthorSerializer
